@@ -5,15 +5,16 @@ from PIL import Image
 
 
 listOfFiles = os.listdir()
-listOfImage = list(filter(lambda x:x.endswith('.jpg'), listOfFiles))
+listOfImage = list(filter(lambda x:x.endswith('.jpg'), listOfFiles)) + list(filter(lambda x:x.endswith('.JPG'), listOfFiles))
 
 width = 700
 for i in range(len(listOfImage)):
     img = Image.open(listOfImage[i])
-    ratio = (img. / float(img.size[0]))
+    ratio = (width / float(img.size[0]))
     height = int((float(img.size[1]) * float(ratio)))
-     img = img.resize((basewidth, height), PIL.Image.ANTIALIAS)
-    img.save()
+    img.resize((width, height), Image.ANTIALIAS)
+    img.save(listOfImage[i])
+    print(i)
 
 
 
