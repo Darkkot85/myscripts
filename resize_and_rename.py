@@ -12,9 +12,10 @@ for i in range(len(listOfImage)):
     img = Image.open(listOfImage[i])
     ratio = (width / float(img.size[0]))
     height = int((float(img.size[1]) * float(ratio)))
-    img.resize((width, height), Image.ANTIALIAS)
-    img.save(listOfImage[i])
-    print(i)
+    image_resized =  img.resize((width, height), Image.ANTIALIAS)
+    image_resized.save(listOfImage[i])
+    os.renames(listOfImage[i], str(i+1) + '.jpg')
+
 
 
 
